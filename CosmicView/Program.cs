@@ -3,7 +3,7 @@ using CosmicView.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddHttpClient<CosmicViewApiService>();
+builder.Services.AddHttpClient<ICosmicViewApiService, CosmicViewApiService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

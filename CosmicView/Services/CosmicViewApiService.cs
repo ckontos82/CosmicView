@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace CosmicView.Services
 {
-    public class CosmicViewApiService
+    public class CosmicViewApiService : ICosmicViewApiService
     {
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
