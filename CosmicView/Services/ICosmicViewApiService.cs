@@ -6,5 +6,4 @@ namespace CosmicView.Services
     {
         Task<List<Picture>> GetPictureAsync(QueryParams queryParams);
     }
-
 }
