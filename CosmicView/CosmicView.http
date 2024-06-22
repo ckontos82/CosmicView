@@ -1,0 +1,6 @@
+@CosmicView_HostAddress = http://localhost:5072
+
+GET {{CosmicView_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
