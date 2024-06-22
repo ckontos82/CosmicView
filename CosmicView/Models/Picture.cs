@@ -4,6 +4,7 @@ namespace CosmicView.Models
 {
     public class Picture
     {
+        public Guid Id { get; set; }
         [JsonPropertyName("copyright")]
         public string Copyright { get; set; }
 

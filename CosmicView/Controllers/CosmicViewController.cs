@@ -8,9 +8,9 @@ namespace CosmicView.Controllers
     [ApiController]
     public class CosmicViewController : ControllerBase
     {
-        private readonly CosmicViewApiService _apiService;
+        private readonly ICosmicViewApiService _apiService;
 
-        public CosmicViewController(CosmicViewApiService apiService)
+        public CosmicViewController(ICosmicViewApiService apiService)
         {
             _apiService = apiService;
         }
