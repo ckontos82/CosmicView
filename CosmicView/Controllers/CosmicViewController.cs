@@ -1,5 +1,6 @@
 ﻿using CosmicView.Models;
 using CosmicView.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CosmicView.Controllers
@@ -41,13 +42,15 @@ namespace CosmicView.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> PostPicture([FromBody]Picture picture)
         {
             await _pictureService.AddPictureAsync(picture);
-            return Ok();
+            return Created("", picture);
         }
 
         [HttpDelete("{date}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeletePicture(string date)
         {
             var success = await _pictureService.DeletePictureByDateAsync(date);
