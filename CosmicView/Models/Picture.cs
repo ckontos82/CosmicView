@@ -6,7 +6,7 @@ namespace CosmicView.Models
     {
         public Guid Id { get; set; }
         [JsonPropertyName("copyright")]
-        public string Copyright { get; set; }
+        public string? Copyright { get; set; }
 
         [JsonPropertyName("date")]
         public string Date { get; set; }
@@ -15,16 +15,16 @@ namespace CosmicView.Models
         public string Explanation { get; set; }
 
         [JsonPropertyName("hdurl")]
-        public string Hdurl { get; set; }
+        public string? Hdurl { get; set; }
 
         [JsonPropertyName("media_type")]
-        public string MediaType { get; set; }
+        public string? MediaType { get; set; }
 
         [JsonPropertyName("service_version")]
-        public string ServiceVersion { get; set; }
+        public string? ServiceVersion { get; set; }
 
         [JsonPropertyName("title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [JsonPropertyName("url")]
         public string Url { get; set; }
