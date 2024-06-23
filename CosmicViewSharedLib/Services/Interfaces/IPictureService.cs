@@ -1,6 +1,11 @@
-﻿using CosmicView.Models;
+﻿using CosmicViewSharedLib.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CosmicView.Services.Interfaces
+namespace CosmicViewSharedLib.Services.Interfaces
 {
     public interface IPictureService
     {

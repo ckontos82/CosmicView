@@ -1,5 +1,7 @@
 ﻿using CosmicView.Models;
 using CosmicView.Services.Interfaces;
+using CosmicViewSharedLib.Models;
+using CosmicViewSharedLib.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CosmicView.Services

@@ -1,5 +1,6 @@
 ﻿using CosmicView.Models;
 using CosmicView.Services.Interfaces;
+using CosmicViewSharedLib.Models;
 using System.Text.Json;
 
 namespace CosmicView.Services

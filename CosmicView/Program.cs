@@ -1,6 +1,7 @@
 using CosmicView;
 using CosmicView.Services;
 using CosmicView.Services.Interfaces;
+using CosmicViewSharedLib.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,4 +1,6 @@
-﻿namespace CosmicView.Models
+﻿using CosmicViewSharedLib.Models;
+
+namespace CosmicView.Models
 {
     public class PictureResponse
     {

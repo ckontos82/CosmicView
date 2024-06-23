@@ -1,4 +1,5 @@
 ﻿using CosmicView.Models;
+using CosmicViewSharedLib.Models;
 
 namespace CosmicView.Services.Interfaces
 {

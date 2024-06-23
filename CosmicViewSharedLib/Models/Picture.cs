@@ -1,6 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
-namespace CosmicView.Models
+namespace CosmicViewSharedLib.Models
 {
     public class Picture
     {
@@ -29,5 +34,4 @@ namespace CosmicView.Models
         [JsonPropertyName("url")]
         public string Url { get; set; }
     }
-
 }
