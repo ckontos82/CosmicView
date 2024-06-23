@@ -1,7 +1,16 @@
+using CosmicViewMvc.Services;
+using CosmicViewSharedLib.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient<IPictureService, PictureService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ApiSettings:BaseUrl"]);
+});
+
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
 var app = builder.Build();
 

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CosmicViewSharedLib.Models.Picture>
+
+@{
+    ViewData["Title"] = "Pictures";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="display-4">Pictures</h1>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="@item.Url" class="card-img-top" alt="@item.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">@item.Explanation.Substring(0, Math.Min(100, @item.Explanation.Length))...</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-date="@item.Date">View</a>
+                            <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-date="@item.Date">Delete</a>
+                        </div>
+                        <small class="text-muted">@item.Date</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

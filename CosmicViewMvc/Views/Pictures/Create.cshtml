@@ -1,0 +1,37 @@
+﻿@model CosmicViewSharedLib.Models.Picture
+
+@{
+    ViewData["Title"] = "Create Picture";
+}
+
+<h1 class="display-4">Create Picture</h1>
+
+<form asp-action="Create">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Date" class="form-label"></label>
+        <input asp-for="Date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Explanation" class="form-label"></label>
+        <textarea asp-for="Explanation" class="form-control"></textarea>
+        <span asp-validation-for="Explanation" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Hdurl" class="form-label"></label>
+        <input asp-for="Hdurl" class="form-control" />
+        <span asp-validation-for="Hdurl" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Url" class="form-label"></label>
+        <input asp-for="Url" class="form-control" />
+        <span asp-validation-for="Url" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
