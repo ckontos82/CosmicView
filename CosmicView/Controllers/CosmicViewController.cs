@@ -1,5 +1,5 @@
 ﻿using CosmicView.Models;
-using CosmicView.Services;
+using CosmicView.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CosmicView.Controllers
@@ -9,10 +9,12 @@ namespace CosmicView.Controllers
     public class CosmicViewController : ControllerBase
     {
         private readonly ICosmicViewApiService _apiService;
+        private readonly IPictureService _pictureService;
 
-        public CosmicViewController(ICosmicViewApiService apiService)
+        public CosmicViewController(ICosmicViewApiService apiService, IPictureService pictureService)
         {
             _apiService = apiService;
+            _pictureService = pictureService;
         }
 
         [HttpGet]
@@ -20,6 +22,13 @@ namespace CosmicView.Controllers
         { 
             var apods = await _apiService.GetPictureAsync(queryParams);
             return Ok(apods);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostPicture([FromBody]Picture picture)
+        {
+            await _pictureService.AddPictureAsync(picture);
+            return Ok();
         }
     }
 }
