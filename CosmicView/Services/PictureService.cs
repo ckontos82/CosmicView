@@ -32,6 +32,12 @@ namespace CosmicView.Services
                 picture.Id = Guid.NewGuid();
             }
 
+            bool pictureExists = await _context.Pictures.AnyAsync(p => p.Date == picture.Date);
+            if (pictureExists)
+            {
+                throw new InvalidOperationException("A picture with the same date already exists.");
+            }
+
             _context.Pictures.Add(picture);
             await _context.SaveChangesAsync();
         }

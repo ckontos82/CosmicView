@@ -45,10 +45,18 @@ namespace CosmicView.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> PostPicture([FromBody]Picture picture)
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        public async Task<IActionResult> PostPicture([FromBody] Picture picture)
         {
-            await _pictureService.AddPictureAsync(picture);
-            return Created("", picture);
+            try
+            {
+                await _pictureService.AddPictureAsync(picture);
+                return Created("", picture);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("{date}")]
