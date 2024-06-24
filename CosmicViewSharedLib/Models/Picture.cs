@@ -17,7 +17,7 @@ namespace CosmicViewSharedLib.Models
         public string Date { get; set; }
 
         [JsonPropertyName("explanation")]
-        public string Explanation { get; set; }
+        public string? Explanation { get; set; }
 
         [JsonPropertyName("hdurl")]
         public string? Hdurl { get; set; }
