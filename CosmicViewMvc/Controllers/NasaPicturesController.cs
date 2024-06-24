@@ -36,12 +36,10 @@ namespace CosmicViewMvc.Controllers
 
             if (response.Count > 0)
             {
-                // Pass the data to your view or handle it as needed
-                return View("Picture", response); // Assuming you have a view to display the pictures
+                return View("Picture", response);
             }
             else
             {
-                // Handle error response
                 return View("Error");
             }
         }
