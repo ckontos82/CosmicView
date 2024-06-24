@@ -1,6 +1,7 @@
 ﻿using CosmicViewSharedLib.Models;
 using CosmicViewSharedLib.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 
 namespace CosmicViewMvc.Controllers
 {
@@ -23,7 +24,26 @@ namespace CosmicViewMvc.Controllers
         {
             var fullUrl = $"{_baseUrl}/CosmicView";
             var pictureOfTheDay = await _httpClient.GetFromJsonAsync<List<Picture>>(fullUrl);
-            return View(pictureOfTheDay[0]);
+            return View(pictureOfTheDay);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> FetchPictures(QueryParams queryParams)
+        {
+            var query = $"?Date={queryParams.Date}&StartDate={queryParams.StartDate}&EndDate={queryParams.EndDate}&Count={queryParams.Count}&Thumbs={queryParams.Thumbs}";
+
+            var response = await _httpClient.GetFromJsonAsync<List<Picture>>($"{_baseUrl}/CosmicView{query}");
+
+            if (response.Count > 0)
+            {
+                // Pass the data to your view or handle it as needed
+                return View("Picture", response); // Assuming you have a view to display the pictures
+            }
+            else
+            {
+                // Handle error response
+                return View("Error");
+            }
         }
 
         [HttpPost]
@@ -44,7 +64,7 @@ namespace CosmicViewMvc.Controllers
                 }
             }
 
-            return View("Picture", picture); 
+            return RedirectToAction("Index", "Home");
         }
 
     }

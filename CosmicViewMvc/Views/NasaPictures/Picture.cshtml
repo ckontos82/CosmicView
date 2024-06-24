@@ -1,74 +1,75 @@
-﻿@model CosmicViewSharedLib.Models.Picture
+﻿@model IEnumerable<CosmicViewSharedLib.Models.Picture>
 
 @{
     ViewData["Title"] = "Picture Of The Day";
 }
 
 <h1 class="display-4">Picture Details</h1>
-
-<form asp-action="SavePic" method="post">
-    <div class="card mb-4">
-        <div class="card-header">
-            @Html.DisplayFor(model => model.Title)
-        </div>
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Date)
-                </dd>
-
-                @if (!string.IsNullOrEmpty(Model.Copyright))
-                {
+@foreach (var picture in Model)
+{
+    <form asp-action="SavePic" method="post">
+        <div class="card mb-4">
+            <div class="card-header">
+                @Html.DisplayFor(modelItem => picture.Title)
+            </div>
+            <div class="card-body">
+                <dl class="row">
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Copyright)
+                        @Html.DisplayNameFor(modelItem => picture.Date)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Copyright)
+                        @Html.DisplayFor(modelItem => picture.Date)
                     </dd>
-                }
 
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Explanation)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Explanation)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Hdurl)
-                </dt>
-                <dd class="col-sm-10">
-                    <a href="@Model.Hdurl" target="_blank">@Model.Hdurl</a>
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Url)
-                </dt>
-                <dd class="col-sm-10">
-                    <a href="@Model.Url" target="_blank">@Model.Url</a>
-                </dd>
-                <dt class="col-sm-2">
-                    Image
-                </dt>
-                <dd class="col-sm-10">
-                    <img src="@Model.Url" style="width: 50%; height:auto" />
-                </dd>
-            </dl>
+                    @if (!string.IsNullOrEmpty(picture.Copyright))
+                    {
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(modelItem => picture.Copyright)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(modelItem => picture.Copyright)
+                        </dd>
+                    }
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(modelItem => picture.Explanation)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(modelItem => picture.Explanation)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(modelItem => picture.Hdurl)
+                    </dt>
+                    <dd class="col-sm-10">
+                        <a href="@picture.Hdurl" target="_blank">@picture.Hdurl</a>
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(modelItem => picture.Url)
+                    </dt>
+                    <dd class="col-sm-10">
+                        <a href="@picture.Url" target="_blank">@picture.Url</a>
+                    </dd>
+                    <dt class="col-sm-2">
+                        Image
+                    </dt>
+                    <dd class="col-sm-10">
+                        <img src="@picture.Url" style="width: 50%; height:auto" />
+                    </dd>
+                </dl>
+            </div>
         </div>
-    </div>
 
-    @Html.HiddenFor(model => model.Id)
-    @Html.HiddenFor(model => model.Copyright)
-    @Html.HiddenFor(model => model.Date)
-    @Html.HiddenFor(model => model.Explanation)
-    @Html.HiddenFor(model => model.Hdurl)
-    @Html.HiddenFor(model => model.MediaType)
-    @Html.HiddenFor(model => model.ServiceVersion)
-    @Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Url)
+        @Html.HiddenFor(modelItem => picture.Id)
+        @Html.HiddenFor(modelItem => picture.Copyright)
+        @Html.HiddenFor(modelItem => picture.Date)
+        @Html.HiddenFor(modelItem => picture.Explanation)
+        @Html.HiddenFor(modelItem => picture.Hdurl)
+        @Html.HiddenFor(modelItem => picture.MediaType)
+        @Html.HiddenFor(modelItem => picture.ServiceVersion)
+        @Html.HiddenFor(modelItem => picture.Title)
+        @Html.HiddenFor(modelItem => picture.Url)
 
-    <button type="submit" class="btn btn-primary">Save Picture</button>
-</form>
-
+        <button type="submit" class="btn btn-primary">Save Picture</button>
+    </form>
+}
 <a asp-action="Index" class="btn btn-secondary">Back to Home Index</a>
