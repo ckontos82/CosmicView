@@ -16,7 +16,8 @@ namespace CosmicViewMvc.Controllers
         public async Task<IActionResult> Index()
         {
             var pictures = await _pictureService.GetAllPicturesAsync();
-            return View(pictures);
+
+            return View(pictures.OrderByDescending(p => DateTime.Parse(p.Date)).ToList());
         }
 
         public async Task<IActionResult> Details(string date)
